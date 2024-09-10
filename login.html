@@ -5,26 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page </title>
     <link rel="stylesheet" href="logstyle.css">
+    <script src="https://kit.fontawesome.com/1df74b18aa.js" crossorigin="anonymous"></script>
+    <script src="login.js"></script>
 </head>
 <body>
-    <h1>Log In</h1>
     <div class = "login-form">
+        <h1>Log In</h1>
         <form id="login-form">
             <div class = "input-field">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="username" required>
             </div>
             <div class = "input-field">
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <div class = "submit-btn">
-                <input type="submit" value="Login">
+                <button type="submit" >Log In</button>
             </div>
         </form>
-        <div class="forgot-password">
-            <a href="#">Forgot Password?</a>
-        </div>
         <div class="create-account">
             <a href="registration.html">Create an Account</a>
         </div>

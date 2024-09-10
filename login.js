@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('form');
-    const nameInput = document.getElementById('name');
+    const form = document.getElementById('login-form');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const repeatPasswordInput = document.getElementById('repeatPassword');
 
     form.addEventListener('submit', function (e) {
         let valid = true;
@@ -11,31 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
         // Clear previous error messages
         clearErrors();
 
-        // Validate Name
-        if (nameInput.value.trim() === "") {
-            showError(nameInput, "Full name is required.");
-            valid = false;
-        }
-
-        // Validate Email
+        // Validate email
         if (!validateEmail(emailInput.value)) {
             showError(emailInput, "Please enter a valid email.");
             valid = false;
         }
 
-        // Validate Password
-        if (passwordInput.value.length < 8) {
-            showError(passwordInput, "Password must be at least 8 characters.");
+        // Validate password
+        if (passwordInput.value.trim() === "") {
+            showError(passwordInput, "Password cannot be empty.");
             valid = false;
         }
 
-        // Validate Repeat Password
-        if (repeatPasswordInput.value !== passwordInput.value) {
-            showError(repeatPasswordInput, "Passwords do not match.");
-            valid = false;
-        }
-
-        // If the form is not valid, prevent submission
+        // If not valid, prevent form submission
         if (!valid) {
             e.preventDefault();
         }
