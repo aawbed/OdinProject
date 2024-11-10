@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+    <script src="/recipe/server.js"></script>
+    <script src="/recipe/recipe.js"></script>
+    <link rel="stylesheet" href="recipeform.css">
+</head>
+<body>
+    <h1>Recipe App</h1>
+    <form id="recipe-form">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" name="recipe-name" required>
+        <label for="recipe-ingredients">Ingredients:</label>
+        <input type="text" id="recipe-ingredients" name="recipe-ingredients" required>
+        <label for="recipe-directions">Directions:</label>
+        <input type="text" id="recipe-directions" name="recipe-directions" required>
+        <button type="submit">Add Recipe</button>
+    </form>
+    <script>
+        document.getElementById("recipe-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("recipe-name").value;
+            const ingredients = document.getElementById("recipe-ingredients").value;
+            const directions = document.getElementById("recipe-directions").value;
+            
+            try {
+                const response = await fetch("http://localhost:3000/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name, ingredients, directions }),
+                });
+                
+                if (response.ok) {
+                    alert("Recipe added successfully!");
+                } else {
+                    alert("Failed to add recipe.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+    </script>
+</body>
+</html>
